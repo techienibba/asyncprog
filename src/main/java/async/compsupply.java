@@ -7,6 +7,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -63,6 +64,48 @@ public class compsupply {
 		
 	}
 	
+	public static Void getempsapply(File jsonfile) throws InterruptedException, ExecutionException, StreamReadException, DatabindException, IOException
+	{
+		ObjectMapper omp = new ObjectMapper();
+		List<Employee> lists =omp.readValue(jsonfile, new TypeReference<List<Employee>>() {});
+		ExecutorService executor = Executors.newFixedThreadPool(5);
+		
+		CompletableFuture<Void> empfutur=CompletableFuture.supplyAsync(()->{System.out.println("The Thread for list is" + Thread.currentThread().getName());
+				return lists.stream().collect(Collectors.toList());},executor).thenApplyAsync((employees) -> {
+					System.out.println("Stream New joiner thread" + Thread.currentThread().getName());
+					return employees.stream().filter((emp) -> emp.getNewjoinee().equalsIgnoreCase("yes")).collect(Collectors.toList());},executor).thenApplyAsync((employees) ->{
+						
+						System.out.println("The Getlearning thread is" + Thread.currentThread().getName());
+						return employees.stream().filter((emp) -> "true".equalsIgnoreCase(emp.getLearningpending())).collect(Collectors.toList());
+						
+					},executor).thenApplyAsync((employees) ->{
+						
+						System.out.println("The Thread to get name is" + Thread.currentThread().getName());
+						return employees.stream().map((emp) -> emp.getName()).collect(Collectors.toList());
+						
+						
+					},executor).thenAcceptAsync((emails)->{
+						
+						System.out.println("The Thread to send email is" + Thread.currentThread().getName());
+						emails.stream().forEach(compsupply::sendemail);
+						
+					},executor);
+			
+			
+			
+			
+			
+	
+		
+		
+		return empfutur.get();
+		
+	}
+	
+	public static void sendemail(String email)
+	{
+		System.out.println("Email sent to " + email);
+	}
 	
 	
 	
@@ -74,14 +117,11 @@ public class compsupply {
 	
 	
 	
-	
-	
-	
-	public static void main(String[] args) throws InterruptedException, ExecutionException
+	public static void main(String[] args) throws InterruptedException, ExecutionException, StreamReadException, DatabindException, IOException
 	{
 		
 		
-		compsupply.getemps(new File(System.getProperty("user.dir") +"\\src\\main\\java\\async\\emp.json"));
+		compsupply.getempsapply(new File(System.getProperty("user.dir") +"\\src\\main\\resources\\emp.json"));
 	}
 	
 	
