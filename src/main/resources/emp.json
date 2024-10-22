@@ -1,62 +1,77 @@
-[
-	{
-		"id":1,
+[{
+	"id":1,
+	"name":"Mohamed Akram",
+	"newjoinee":"yes",
+	"learningpending":"yes",
+	"email":"test1@test.com"
+	
+	
+	
+	
+	
+	
+},
+
+{
+	
+	"id":2,
 		"name":"Mohamed Akram",
-		"newjoinee": "yes",
-		"learningpending":"true",
+		"newjoinee":"yes",
+		"learningpending":"yes",
 		"email":"test1@test.com"
 		
 		
-	},
 	
-	{
-		"id":2,
-		"name":"Mohamed Akram",
-		"newjoinee": "No",
-	    "learningpending":"false",
-		"email":"test2@test.com"
-		
-	},
+	
+	
+	
+},
 
-	{
-		"id":3,
+{
+	"id":3,
 		"name":"Mohamed Akram",
-		"newjoinee": "yes",
-		"learningpending":"true",
-		"email":"test3@test.com"
+		"newjoinee":"yes",
+		"learningpending":"yes",
+		"email":"test1@test.com"
 		
 		
-	},
+	
+	
+	
+	
+	
+},
 
-	{
-		"id":4,
+{
+	
+	
+	"id":4,
 		"name":"Mohamed Akram",
-		"newjoinee": "No",
-		"learningpending":"false",
-		"email":"test4@test.com"
+		"newjoinee":"yes",
+		"learningpending":"yes",
+		"email":"test1@test.com"
 		
 		
-	},
+	
+	
+	
+},
 
-	{
-		"id":5,
+{
+	
+	
+	"id":5,
 		"name":"Mohamed Akram",
-		"newjoinee": "yes",
-		"learningpending":"true",
-		"email":"test5@test.com"
+		"newjoinee":"yes",
+		"learningpending":"yes",
+		"email":"test1@test.com"
 		
 		
-	}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+}
+
+
+
 ]
